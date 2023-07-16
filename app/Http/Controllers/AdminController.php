@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -46,10 +47,47 @@ class AdminController extends Controller
             $file->move(public_path('upload/admin/img'), $filename);
             $data['profile_image'] = $filename;
         }
+
         $data->save();
 
-        return redirect()->route('admin.profile');
+        $notification = array(
+            'message' => 'Profile Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('admin.profile')->with($notification);
     }
+
+
+
+    public function changePassword()
+    {
+        return view('admin.change_password');
+    }
+
+    public function updatePassword (Request $request)
+    {
+        $validateData = $request->validate([
+            'oldpass' => 'required',
+            'newPass' => 'required',
+            'confirmPass' => 'required|same:newPass',
+
+        ]);
+
+        $hashedPassword = Auth::user()->password;
+        if (Hash::check($request->oldPass, $hashedPassword)) {
+            $user = User::find(Auth::id());
+            $user->password = bcrypt($request->newPass);
+            $user->save();
+
+            session()->flash('message', 'Password Updated Successfully');
+            return redirect()->back();
+        } else {
+            session()->flash('message', 'Password is not matched');
+            return redirect()->back();
+        }
+    }
+
+
 
     /**
      * Destroy an authenticated session.
