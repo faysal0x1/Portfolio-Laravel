@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // return View('welcome');
+    return view('frontend.index');
+});
+Route::get('/task', function () {
     // return View('welcome');
     return view('welcome');
 });
@@ -43,6 +48,14 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('/store/profile', 'storeProfile')->name('store.profile');
     Route::post('/update/password', 'updatePassword')->name('update.password');
 });
+
+// ALl FrontEndController Routes
+
+Route::controller(FrontEndController::class)->group(function () {
+    Route::get('/admin/logout', 'destroy')->name('admin.logout');
+});
+
+
 
 
 
