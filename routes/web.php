@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\Home\AboutController;
+use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +37,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-
 // ALl Admiin Routes
-
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/admin/logout', 'destroy')->name('admin.logout');
@@ -49,14 +49,26 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('/update/password', 'updatePassword')->name('update.password');
 });
 
+// ALl HomeSlider Controller Routes
+
+Route::controller(HomeSliderController::class)->group(function () {
+    Route::get('/about/page', 'aboutPage')->name('home.slide');
+    Route::post('/update/slider', 'updateSlider')->name('update.slider');
+});
+
+// ALl About Page Controller Routes
+Route::controller(AboutController::class)->group(function () {
+    Route::get('/home/slide', 'homeSlider')->name('about.page');
+    Route::post('/update/slider', 'updateSlider')->name('update.slider');
+});
+
+
 // ALl FrontEndController Routes
 
 Route::controller(FrontEndController::class)->group(function () {
     Route::get('/admin/logout', 'destroy')->name('admin.logout');
+
 });
-
-
-
 
 
 // Auth MiddleWate

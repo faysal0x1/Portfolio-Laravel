@@ -1,32 +1,26 @@
-
-
-
 @extends('frontend.front_master')
 
 @section('content')
 
+    @include('frontend.components.home_all.banner')
 
-@include('frontend.test')
+    @include('frontend.components.home_all.about')
 
-@include('frontend.components.banner')
+    @include('frontend.components.home_all.services')
 
-@include('frontend.components.about')
+    @include('frontend.components.home_all.workProcess')
 
-@include('frontend.components.services')
+    @include('frontend.components.home_all.portfolio')
 
-@include('frontend.components.workProcess')
+    @include('frontend.components.home_all.partner')
 
-@include('frontend.components.portfolio')
-
-@include('frontend.components.partner')
-
-@include('frontend.components.testimonial')
+    @include('frontend.components.home_all.testimonial')
 
 
 
-@include('frontend.components.blog')
+    @include('frontend.components.home_all.blog')
 
 
-@include('frontend.components.contact')
+    @include('frontend.components.home_all.contact')
 
 @endsection
