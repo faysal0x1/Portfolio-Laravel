@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,27 +53,41 @@ Route::controller(AdminController::class)->group(function () {
 // ALl HomeSlider Controller Routes
 
 Route::controller(HomeSliderController::class)->group(function () {
-    Route::get('/about/page', 'aboutPage')->name('home.slide');
+    Route::get('/home/slide', 'homeSlider')->name('home.slide');
     Route::post('/update/slider', 'updateSlider')->name('update.slider');
 });
 
-// ALl About Page Controller Routes
+// About Page Controller Routes
 Route::controller(AboutController::class)->group(function () {
-    Route::get('/home/slide', 'homeSlider')->name('about.page');
-    Route::post('/update/slider', 'updateSlider')->name('update.slider');
+    Route::get('/about/Page', 'aboutPage')->name('about.page');
+    Route::post('/update/about', 'updateAbout')->name('update.about');
+    Route::get('/about', 'HomeAbout')->name('home.about');
+    Route::get('/about/multi/image', 'aboutMultiImage')->name('about.multi.image');
+    Route::post('/store/multi/image', 'storeMultiImage')->name('store.multi.image');
+    Route::get('/all/multi/image', 'allMultiImage')->name('all.multi.image');
+
+    Route::get('/edit/multi/image/{id}', 'editMultiImage')->name('edit.multi.image');
+    Route::get('/delete/multi/image/{id}', 'deleteMultiImage')->name('delete.multi.image');
+    Route::post('/update/multi/image', 'updateMultiImage')->name('update.multi.image');
+
+});
+
+//Portfolio Page Controller
+
+Route::controller(PortfolioController::class)->group(function () {
+    Route::get('/all/portfolio', 'AllPortfolio')->name('all.portfolio');
+
+
 });
 
 
 // ALl FrontEndController Routes
-
 Route::controller(FrontEndController::class)->group(function () {
     Route::get('/admin/logout', 'destroy')->name('admin.logout');
 
 });
 
-
 // Auth MiddleWate
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
