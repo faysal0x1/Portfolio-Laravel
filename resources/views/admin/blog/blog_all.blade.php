@@ -48,7 +48,7 @@
              <i class="fas fa-edit"></i>
             </a>
 
-            <a href="{{ url('delete.blog', $item->id) }}" title="Delete Data" class="btn btn-danger"
+            <a href="{{ route('delete.blog', $item->id) }}" title="Delete Data" class="btn btn-danger"
              id="delete">
              <i class="fas fa-trash"></i>
 

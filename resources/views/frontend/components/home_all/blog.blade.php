@@ -1,5 +1,5 @@
 @php
- $blog = App\Models\Blog::latest()->get();
+ $blog = App\Models\Blog::latest()->limit(3)->get();
 @endphp
 
 <section class="blog">
@@ -17,8 +17,9 @@
       </div>
       <div class="blog__post__content">
        <span class="date">{{ $item->updated_at }}</span>
-       <h3 class="title"><a href="blog-details.html">{{ $item->title }}</a></h3>
-       <a href="blog-details.html" class="read__more">Read mORe</a>
+       <h3 class="title"><a href="{{ route('blog.details',$item->id) }}">{{ $item->title }}</a></h3>
+
+       <a href="{{ route('blog.details',$item->id) }}" class="read__more">Read mORe</a>
       </div>
      </div>
 
