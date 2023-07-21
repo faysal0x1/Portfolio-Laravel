@@ -21,9 +21,7 @@
         <thead>
          <tr>
           <th>SL</th>
-          <th>Portfolio Name</th>
-          <th>Portfolio Title</th>
-          <th>Image</th>
+          <th>Blog Category Name</th>
           <th>Action</th>
 
          </tr>
@@ -32,21 +30,17 @@
         <tbody>
 
          @php($i = 1)
-         @foreach ($portfolio as $item)
+         @foreach ($blog as $item)
           <tr>
            <td>{{ $i++ }}</td>
-           <td>{{ $item->portfolio_name }}</td>
-           <td>{{ $item->title }}</td>
-           <td>
-            <img src="{{ asset($item->image) }}" alt="" height="50px" width="50px">
-           </td>
+           <td>{{ $item->category }}</td>
 
            <td>
-            <a href="{{ route('edit.portfolio.image', $item->id) }}" class="btn btn-info">
+            <a href="{{ route('edit.blog.category', $item->id) }}" class="btn btn-info">
              <i class="fas fa-edit"></i>
             </a>
 
-            <a href="{{ url('delete.portfolio.image', $item->id) }}" title="Delete Data" class="btn btn-danger"
+            <a href="{{ route('delete.blog.category', $item->id) }}" title="Delete Data" class="btn btn-danger"
              id="delete">
              <i class="fas fa-trash"></i>
 

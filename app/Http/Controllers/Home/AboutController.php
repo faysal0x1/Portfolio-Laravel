@@ -9,7 +9,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
-class AboutController extends Controller
+class
+AboutController extends Controller
 {
     //
 

@@ -54,8 +54,9 @@
                         <li><a href="{{ route('about.multi.image') }}">Multi Image Upload</a></li>
                         <li><a href="{{ route('all.multi.image') }}">All Multi Image </a></li>
                     </ul>
-
                 </li>
+
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
@@ -63,9 +64,33 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('all.portfolio') }}">All Portfolio</a></li>
-                        <li><a href="{{ route('about.multi.image') }}">Add Portfolio</a></li>
+                        <li><a href="{{ route('add.portfolio') }}">Add Portfolio</a></li>
                     </ul>
 
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Blog Category Page Set Up</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('all.blog.category') }}">All Blog Category</a></li>
+
+                        <li><a href="{{ route('add.blog.category') }}">Add Blog Category</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Blog Page Set Up</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('all.blog') }}">All Blog </a></li>
+
+                        <li><a href="{{ route('add.blog') }}">Add Blog</a></li>
+                    </ul>
                 </li>
 
 
