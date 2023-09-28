@@ -17,4 +17,4 @@ jobs:
         server: ftp.faysalswe.com
         username: faysalsw@portfolios.faysalswe.com
         password: YAT5+4d[1x4Dnb
-        server-dir: /portfolios.faysalsw.com/faysalsw
+        server-dir: /home/faysalsw/portfolios.faysalswe.com/faysalsw
