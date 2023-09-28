@@ -80,8 +80,6 @@ Route::controller(PortfolioController::class)->group(function () {
     Route::post('/store/portfolio', 'StorePortfolio')->name('store.portfolio');
 
     Route::get('/portfolio/details/{id}', 'PortfolioDetails')->name('portfolio.details');
-
-
     Route::get('/edit/portfolio/image/{id}', 'editPortfolio')->name('edit.portfolio.image');
 
     Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.portfolio');

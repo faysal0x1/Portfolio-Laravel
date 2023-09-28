@@ -18,12 +18,12 @@
                             <form method="post" action="{{ route('update.slider') }}" enctype="multipart/form-data">
                                 @csrf
 
-                                <input type="hidden" name="id" value="{{ $homeslide->id }}">
+                                <input type="hidden" name="id" value="{{ $homeslide->id ?? ''}}">
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
                                         <input name="title" class="form-control" type="text"
-                                               value="{{ $homeslide->title }}"
+                                               value="{{ $homeslide->title ?? ''}}"
                                                id="example-text-input">
                                     </div>
                                 </div>
@@ -33,7 +33,7 @@
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Short Title</label>
                                     <div class="col-sm-10">
                                         <input name="short_title" class="form-control" type="text"
-                                               value="{{ $homeslide->short_title }}"
+                                               value="{{ $homeslide->short_title ?? ''}}"
                                                id="example-text-input">
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Video URL </label>
                                     <div class="col-sm-10">
                                         <input name="video_url" class="form-control" type="text"
-                                               value="{{ $homeslide->video_url }}"
+                                               value="{{ $homeslide->video_url ?? ''}}"
                                                id="example-text-input">
                                     </div>
                                 </div>

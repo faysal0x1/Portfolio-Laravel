@@ -24,25 +24,27 @@ AboutController extends Controller
     {
         $id = $request->id;
         if ($request->file('about_image')) {
+            // return response()->json($request->all());
             $img = $request->file('about_image');
             $name_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
             Image::make($img)->resize(523, 605)->save('upload/home_about/' . $name_gen);
             $save_url = 'upload/home_about/' . $name_gen;
 
-            About::findOrFail($id)->update([
+            About::updateOrCreate(['id' => $id], [
                 'title' => $request->title,
                 'short_title' => $request->short_title,
                 'short_description' => $request->short_description,
                 'long_description' => $request->long_description,
                 'about_image' => $save_url,
             ]);
+
             $notification = array(
                 'message' => 'About Page updated With Image Successfully',
-                'alert-type' => 'success'
+                'alert-type' => 'success',
             );
             return redirect()->back()->with($notification);
         } else {
-            About::findOrFail($id)->update([
+            About::updateOrCreate(['id' => $id], [
                 'title' => $request->title,
                 'short_title' => $request->short_title,
                 'short_description' => $request->short_description,
@@ -51,19 +53,17 @@ AboutController extends Controller
 
             $notification = array(
                 'message' => 'About Page updated Without Image Successfully',
-                'alert-type' => 'success'
+                'alert-type' => 'success',
             );
             return redirect()->back()->with($notification);
         }
     }
-
 
     public function HomeAbout()
     {
         $aboutPage = About::find(1);
         return view('frontend.page.about', compact('aboutPage'));
     }
-
 
     public function aboutMultiImage()
     {
@@ -79,7 +79,6 @@ AboutController extends Controller
 
         foreach ($images as $multi_image) {
 
-
             $img = $request->file('about_image');
 
             $name_gen = hexdec(uniqid()) . '.' . $multi_image->getClientOriginalExtension();
@@ -89,25 +88,23 @@ AboutController extends Controller
 
             MultiImage::insert([
                 'multi_image' => $save_url,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
             ]);
 
         }
         $notification = array(
             'message' => 'About Page updated Without Image Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
 
         return redirect()->back()->with($notification);
     }
-
 
     public function allMultiImage()
     {
         $multiImages = MultiImage::all();
         return view('admin.about_page.all_multi_image', compact('multiImages'));
     }
-
 
     public function editMultiImage($id)
     {
@@ -121,7 +118,6 @@ AboutController extends Controller
         $id = $request->id;
         if ($request->file('multi_image')) {
 
-
             $img = $request->file('multi_image');
             $name_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
             Image::make($img)->resize(220, 220)->save('upload/multi_image/' . $name_gen);
@@ -133,7 +129,7 @@ AboutController extends Controller
 
             $notification = array(
                 'message' => 'Multi Image updated  Successfully',
-                'alert-type' => 'success'
+                'alert-type' => 'success',
             );
 
             return redirect()->route('all.multi.image')->with($notification);
@@ -147,7 +143,7 @@ AboutController extends Controller
 
             $notification = array(
                 'message' => 'About Page updated Without Image Successfully',
-                'alert-type' => 'success'
+                'alert-type' => 'success',
             );
             return redirect()->back()->with($notification);
         }
@@ -164,7 +160,7 @@ AboutController extends Controller
 
         $notification = array(
             'message' => 'Image Delete Successfully',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
     }

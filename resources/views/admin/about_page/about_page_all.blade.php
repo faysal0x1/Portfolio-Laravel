@@ -16,12 +16,12 @@
                             <form method="post" action="{{ route('update.about') }}" enctype="multipart/form-data">
                                 @csrf
 
-                                <input type="hidden" name="id" value="{{$aboutPage->id}}">
+                                <input type="hidden" name="id" value="{{$aboutPage->id ?? 1}}">
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
                                         <input name="title" class="form-control" type="text"
-                                               value="{{ $aboutPage->title }}"
+                                               value="{{ $aboutPage->title ?? '' }}"
                                                id="example-text-input">
                                     </div>
                                 </div>
@@ -31,7 +31,7 @@
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Short Title</label>
                                     <div class="col-sm-10">
                                         <input name="short_title" class="form-control" type="text"
-                                               value="{{ $aboutPage->short_title }}"
+                                               value="{{ $aboutPage->short_title ?? '' }}"
                                                id="example-text-input">
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
                                         Description</label>
                                     <div class="col-sm-10">
                                         <input name="short_description" class="form-control" type="text"
-                                               value="{{ $aboutPage->short_description }}"
+                                               value="{{ $aboutPage->short_description ?? '' }}"
                                                id="example-text-input">
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                         Description</label>
                                     <div class="col-sm-10">
                                         <textarea name="long_description" id="elm1" cols="30" rows="10">
-                                        {{ $aboutPage->long_description }}
+                                        {{ $aboutPage->long_description ?? '' }}
                                         </textarea>
 
                                     </div>

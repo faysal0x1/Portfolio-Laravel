@@ -26,7 +26,7 @@ class HomeSliderController extends Controller
 
             Image::make($img)->resize(636, 852)->save('upload/home_slide/' . $name_gen);
             $save_url = 'upload/home_slide/' . $name_gen;
-            HomeSlide::findOrFail($id)->update([
+            HomeSlide::updateOrCreate(['id' => $id],[
                 'title' => $request->title,
                 'short_title' => $request->short_title,
                 'video_url' => $request->video_url,
@@ -41,7 +41,7 @@ class HomeSliderController extends Controller
             return redirect()->back()->with($notification);
 
         } else {
-            HomeSlide::findOrFail($id)->update([
+            HomeSlide::updateOrCreate(['id' => $id],[
                 'title' => $request->title,
                 'short_title' => $request->short_title,
                 'video_url' => $request->video_url,
