@@ -15,8 +15,6 @@ jobs:
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Copy .composer
         run: php -r "file_exists('composer.lock.json') || copy('composer.lock.json', 'composer.json');"
-      - name: Generate key
-        run: php artisan key:generate
       - name: Generate storage link
         run: php artisan storage:link
       - name: Directory Permissions
