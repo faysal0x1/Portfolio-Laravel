@@ -13,10 +13,6 @@ jobs:
       - uses: actions/setup-node@master
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      - name: Copy .composer
-        run: php -r "file_exists('composer.lock.json') || copy('composer.lock.json', 'composer.json');"
-      - name: Generate storage link
-        run: php artisan storage:link
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
       - name: 📂 Sync files
